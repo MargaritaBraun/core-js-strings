@@ -19,8 +19,14 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (typeof value === 'undefined' || value === null) {
+    return 0;
+  }
+  if (typeof value === 'string') {
+    return value.length;
+  }
+  return value.length;
 }
 
 /**
@@ -37,8 +43,16 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(param) {
+  if (typeof param === 'string') {
+    return true;
+  }
+
+  if (param instanceof String) {
+    return true;
+  }
+
+  return false;
 }
 
 /**
