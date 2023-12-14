@@ -149,8 +149,11 @@ function removeTrailingWhitespaces(str) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, count) {
+  if (count <= 0 || str === '') {
+    return '';
+  }
+  return str.repeat(count);
 }
 
 /**
@@ -165,8 +168,14 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const index = str.indexOf(value);
+  const lenValue = value.length;
+  if (index === -1) {
+    return str;
+  }
+  const rezult = str.slice(0, index) + str.slice(index + lenValue);
+  return rezult;
 }
 
 /**
@@ -181,8 +190,18 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const index = str.lastIndexOf(value);
+  if (index === -1) {
+    return str;
+  }
+  if (index === str.length - value.length) {
+    return str.slice(0, index);
+  }
+  const exam1 = str.slice(0, index);
+  const exam2 = str.slice(index + value.length, str.length);
+  const rezult = exam1 + exam2;
+  return rezult;
 }
 
 /**
@@ -197,8 +216,18 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let sum = 0;
+  if (str === null || str === undefined || str.isNan || str.length === 0) {
+    return 0;
+  }
+  for (let i = 0; i <= str.length; i += 1) {
+    const elem = str.charCodeAt(i);
+    if (elem >= 0) {
+      sum += elem;
+    }
+  }
+  return sum;
 }
 
 /**
